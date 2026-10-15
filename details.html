@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#672384">
+  <title>Admin Dashboard - Course Description</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <main class="course-window">
+    <aside class="color-panel" aria-hidden="true"></aside>
+    <section class="form-panel" aria-labelledby="page-title">
+      <div class="form-header">
+        <a class="back-link" href="/">← Back</a>
+        <img class="brand-logo" src="/assets/springboard-logo.png" alt="Springboard logo">
+      </div>
+      <h1 id="page-title">Admin Dashboard</h1>
+      <form class="course-form details-form" action="/settings">
+        <div class="field">
+          <label for="description">Description</label>
+          <input id="description" name="description" type="text" required>
+        </div>
+        <div class="field">
+          <label for="contents">Contents</label>
+          <input id="contents" name="contents" type="text" required>
+        </div>
+        <div class="field">
+          <label for="requirements">Requirements</label>
+          <input id="requirements" name="requirements" type="text" required>
+        </div>
+        <div class="field">
+          <label for="learn">What You Learn</label>
+          <input id="learn" name="learn" type="text" required>
+        </div>
+        <div class="action-row">
+          <button class="button" type="button" data-cancel-course>Cancel</button>
+          <button class="button button-primary" type="submit">Create Course</button>
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#48218c">
+  <meta name="description" content="Springboard administration portal">
+  <title>Admin Dashboard - Springboard</title>
+  <link rel="stylesheet" href="/portal.css">
+  <script src="/portal.js" defer></script>
+</head>
+<body>
+  <main>
+    <section class="split-frame" data-screen="home" hidden>
+      <div class="home-color-panel" aria-hidden="true"></div>
+      <div class="screen-panel home-panel">
+        <div class="portal-brand"><img src="/assets/springboard-logo.png" alt="Her Springboard"></div>
+        <h1>Admin Dashboard</h1>
+        <nav class="home-actions" aria-label="Admin actions">
+          <a class="outline-button" href="/users">Manage Users</a>
+          <a class="outline-button" href="/courses">Manage Courses</a>
+          <a class="outline-button" href="/" data-logout>Logout</a>
+        </nav>
+      </div>
+    </section>
+
+    <section class="split-frame" data-screen="user-actions" hidden>
+      <div class="screen-panel">
+        <a class="back-link" href="/">‹ <span>Back</span></a>
+        <div class="portal-brand"><img src="/assets/springboard-logo.png" alt="Her Springboard"></div>
+        <h1>Admin Dashboard</h1>
+        <nav class="home-actions" aria-label="User management actions">
+          <a class="outline-button" href="/users/new">Create User</a>
+          <a class="outline-button" href="/users/list">User List</a>
+        </nav>
+      </div>
+    </section>
+
+    <section class="split-frame" data-screen="course-actions" hidden>
+      <div class="screen-panel">
+        <a class="back-link" href="/">‹ <span>Back</span></a>
+        <div class="portal-brand"><img src="/assets/springboard-logo.png" alt="Her Springboard"></div>
+        <h1>Admin Dashboard</h1>
+        <nav class="home-actions" aria-label="Course management actions">
+          <a class="outline-button" href="/courses/new">Create Course</a>
+          <a class="outline-button" href="/courses/list">Course List</a>
+        </nav>
+      </div>
+    </section>
+
+    <section class="split-frame" data-screen="create-basic" hidden>
+      <div class="screen-panel form-screen">
+        <a class="back-link" href="/users">‹ <span>Back</span></a>
+        <div class="portal-brand"><img src="/assets/springboard-logo.png" alt="Her Springboard"></div>
+        <h1>Admin Dashboard</h1>
+        <form class="user-form compact-form" data-user-form>
+          <div class="field"><label for="firstName">First Name</label><input id="firstName" name="firstName" autocomplete="given-name" required></div>
+          <div class="field"><label for="lastName">Last Name</label><input id="lastName" name="lastName" autocomplete="family-name" required></div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required><label class="check-field"><input name="emailVerified" type="checkbox"> <span>Email Verified</span></label></div>
+          <div class="field"><label for="password">Password</label><input id="password" name="password" type="password" autocomplete="new-password" required></div>
+          <button class="round-button" type="submit" aria-label="Continue">→</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="split-frame" data-screen="create-learning" hidden>
+      <div class="screen-panel form-screen">
+        <div class="portal-brand"><img src="/assets/springboard-logo.png" alt="Her Springboard"></div>
+        <h1>Admin Dashboard</h1>
+        <form class="user-form compact-form" data-user-form>
+          <div class="field"><label for="category">Category</label><input id="category" name="category" required></div>
+          <div class="field"><label for="courseCompleted">Course Completed</label><input id="courseCompleted" name="courseCompleted"></div>
+          <div class="field"><label for="coursesInProgress">Courses In Progress</label><input id="coursesInProgress" name="coursesInProgress"></div>
+          <fieldset class="register-field"><legend>Register As</legend><label><input type="radio" name="registerAs" value="Trainee" required> Trainee</label><label><input type="radio" name="registerAs" value="Student"> Student</label></fieldset>
+          <button class="round-button" type="submit" aria-label="Continue">→</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="split-frame" data-screen="create-profile" hidden>
+      <div class="screen-panel form-screen">
+        <div class="portal-brand"><img src="/assets/springboard-logo.png" alt="Her Springboard"></div>
+        <h1>Admin Dashboard</h1>
+        <form class="user-form compact-form" data-user-form>
+          <div class="paired-fields">
+            <div class="field"><label for="gender">Gender</label><input id="gender" name="gender"></div>
+            <div class="field"><label for="hoursSpent">Hours Spent this week</label><input id="hoursSpent" name="hoursSpent" type="number" min="0" step="0.5"></div>
+          </div>
+          <div class="field"><label for="goal">Goal</label><input id="goal" name="goal"></div>
+          <div class="field"><label for="profileUrl">Profile URL</label><input id="profileUrl" name="profileUrl" type="url"></div>
+          <div class="field"><label for="skills">Skills</label><input id="skills" name="skills"></div>
+          <div class="form-actions"><a class="outline-button" href="/users">Cancel</a><button class="solid-button" type="submit">Create User</button></div>
+        </form>
+      </div>
+    </section>
+
+    <section class="list-page" data-screen="user-list" hidden>
+      <header class="list-header">
+        <div class="list-identity"><a class="list-brand" href="/" aria-label="Admin dashboard"><span class="logo-crop"><img src="/assets/springboard-logo.png" alt=""></span><strong>Admin Dashboard</strong></a><a class="list-back" href="/users">‹ Back</a></div>
+        <div class="list-tools">
+          <label class="search-field"><input type="search" placeholder="Search by email or name" data-user-search aria-label="Search users"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg></label>
+          <a class="solid-button" href="/users/new">Create User</a>
+        </div>
+      </header>
+      <section class="user-table-card" aria-label="Users">
+        <div class="table-scroll"><table>
+          <thead><tr><th>Name</th><th>Email</th><th>Category</th><th>Email Verified</th><th>Approval Status</th><th>Actions</th></tr></thead>
+          <tbody data-user-rows></tbody>
+        </table></div>
+        <p class="empty-state" data-empty-state hidden>No users match your search.</p>
+      </section>
+      <p class="toast" role="status" aria-live="polite" data-toast hidden></p>
+    </section>
+
+    <section class="split-frame" data-screen="course-create" hidden>
+      <div class="screen-panel form-screen">
+        <a class="back-link" href="/courses">‹ <span>Back</span></a>
+        <div class="portal-brand"><img src="/assets/springboard-logo.png" alt="Her Springboard"></div>
+        <h1>Admin Dashboard</h1>
+        <form class="user-form compact-form course-entry-form" data-course-entry-form novalidate>
+          <div class="course-fields">
+            <div class="course-step" data-course-step="0">
+            <div class="field"><label for="courseId">Course ID:</label><input id="courseId" name="courseId" placeholder="Course ID" required></div>
+            <div class="field"><label for="creatorId">User ID (Creator):</label><input id="creatorId" name="creatorId" placeholder="User ID" required></div>
+            <div class="field"><label for="courseCategory">Category:</label><input id="courseCategory" name="category" placeholder="Category" required></div>
+            <label class="course-check"><span>Completed:</span><input name="completed" type="checkbox"></label>
+            </div>
+            <div class="course-step" data-course-step="1" hidden>
+            <div class="field"><label for="contents">Contents:</label><textarea id="contents" name="contents" placeholder="Contents" rows="2"></textarea></div>
+            <div class="field"><label for="cost">Cost:</label><input id="cost" name="cost" type="number" min="0" step="0.01" placeholder="Cost"></div>
+            <div class="field"><label for="courseReview">Course Review:</label><textarea id="courseReview" name="courseReview" placeholder="Course Review" rows="2"></textarea></div>
+            <div class="field"><label for="courseDescription">Description:</label><textarea id="courseDescription" name="description" placeholder="Description" rows="2"></textarea></div>
+            </div>
+            <div class="course-step" data-course-step="2" hidden>
+            <div class="field"><label for="enrolled">Enrolled:</label><input id="enrolled" name="enrolled" type="number" min="0" step="1" value="0"></div>
+            <div class="field"><label for="estimatedDuration">Estimated Duration:</label><input id="estimatedDuration" name="estimatedDuration" placeholder="Estimated Duration"></div>
+            <div class="field"><label for="imageUrl">Image URL:</label><input id="imageUrl" name="imageUrl" type="url" placeholder="Image URL"></div>
+            <div class="field"><label for="lastUpdatedOn">Last Updated On:</label><input id="lastUpdatedOn" name="lastUpdatedOn" type="date"></div>
+            </div>
+            <div class="course-step" data-course-step="3" hidden>
+            <div class="field"><label for="publishedOn">Published On:</label><input id="publishedOn" name="publishedOn" type="date"></div>
+            <div class="field"><label for="rating">Rating:</label><input id="rating" name="rating" type="number" min="0" max="5" step="0.1" value="0"></div>
+            <div class="field"><label for="requirements">Requirements:</label><textarea id="requirements" name="requirements" placeholder="Requirements" rows="2"></textarea></div>
+            <div class="field"><label for="title">Title:</label><input id="title" name="title" placeholder="Title" required></div>
+            </div>
+            <div class="course-step" data-course-step="4" hidden>
+            <div class="field"><label for="whatWeCover">What We Cover In Course:</label><textarea id="whatWeCover" name="whatWeCover" placeholder="What We Cover In Course" rows="2"></textarea></div>
+            <div class="field"><label for="whatYouLearn">What You Learn:</label><textarea id="whatYouLearn" name="whatYouLearn" placeholder="What You Learn" rows="2"></textarea></div>
+            </div>
+          </div>
+          <p class="course-step-status" data-course-step-status aria-live="polite">Step 1 of 5</p>
+          <div class="form-actions course-step-actions">
+            <a class="outline-button" href="/courses">Cancel</a>
+            <button class="outline-button" type="button" data-course-previous hidden>Previous</button>
+            <button class="solid-button" type="button" data-course-next>Next</button>
+            <button class="solid-button" type="submit" data-course-submit hidden>Create Course</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="list-page" data-screen="course-list" hidden>
+      <header class="list-header">
+        <div class="list-identity"><a class="list-brand" href="/" aria-label="Admin dashboard"><span class="logo-crop"><img src="/assets/springboard-logo.png" alt=""></span><strong>Admin Dashboard</strong></a><a class="list-back" href="/courses">‹ Back</a></div>
+        <div class="list-tools">
+          <label class="search-field"><input type="search" placeholder="Search by title or course ID" data-course-search aria-label="Search courses"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg></label>
+          <a class="solid-button" href="/courses/new">Create Course</a>
+        </div>
+      </header>
+      <section class="user-table-card course-table-card" aria-label="Courses">
+        <div class="table-scroll"><table>
+          <thead><tr><th>Course ID</th><th>Title</th><th>Category</th><th>Creator</th><th>Cost</th><th>Completed</th><th>Enrolled</th><th>Rating</th><th>Published On</th></tr></thead>
+          <tbody data-course-rows></tbody>
+        </table></div>
+        <p class="empty-state" data-course-empty-state hidden>No courses match your search.</p>
+      </section>
+    </section>
+
+    <section class="edit-page" data-screen="edit-user" hidden>
+      <header class="edit-header"><a class="list-brand" href="/" aria-label="Admin dashboard"><span class="logo-crop"><img src="/assets/springboard-logo.png" alt=""></span></a></header>
+      <form class="edit-card" data-edit-form>
+        <div class="edit-columns">
+          <div>
+            <div class="field"><label for="editFirstName">First Name</label><input id="editFirstName" name="firstName" required></div>
+            <div class="field"><label for="editLastName">Last Name</label><input id="editLastName" name="lastName" required></div>
+            <div class="field"><label for="editEmail">Email</label><input id="editEmail" name="email" type="email" required><label class="check-field"><input name="emailVerified" type="checkbox"> <span>Email Verified</span></label></div>
+            <div class="field"><label for="editPassword">Password</label><input id="editPassword" name="password" type="password" autocomplete="new-password" placeholder="Leave blank to keep current password"></div>
+            <div class="field"><label for="editCategory">Category</label><input id="editCategory" name="category"></div>
+            <div class="field"><label for="editCourseCompleted">Course Completed</label><input id="editCourseCompleted" name="courseCompleted"></div>
+          </div>
+          <div>
+            <div class="field"><label for="editCoursesInProgress">Courses In Progress</label><input id="editCoursesInProgress" name="coursesInProgress"></div>
+            <div class="paired-fields">
+              <div class="field"><label for="editGender">Gender</label><input id="editGender" name="gender"></div>
+              <div class="field"><label for="editHoursSpent">Hours Spent this week</label><input id="editHoursSpent" name="hoursSpent" type="number" min="0" step="0.5"></div>
+            </div>
+            <div class="field"><label for="editGoal">Goal</label><input id="editGoal" name="goal"></div>
+            <div class="field"><label for="editProfileUrl">Profile URL</label><input id="editProfileUrl" name="profileUrl" type="url"></div>
+            <div class="field"><label for="editSkills">Skills</label><input id="editSkills" name="skills"></div>
+            <fieldset class="register-field"><legend>Register As</legend><label><input type="radio" name="registerAs" value="Trainee"> Trainee</label><label><input type="radio" name="registerAs" value="Student"> Student</label></fieldset>
+            <div class="form-actions"><a class="outline-button" href="/users/list">Cancel</a><button class="solid-button" type="submit">Save Changes</button></div>
+          </div>
+        </div>
+        <p class="form-error" data-form-error role="alert" hidden></p>
+      </form>
+      <p class="toast" role="status" aria-live="polite" data-toast hidden></p>
+    </section>
+  </main>
+  <p class="toast global-toast" role="status" aria-live="polite" data-global-toast hidden></p>
+</body>
+</html>

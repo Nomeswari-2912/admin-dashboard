@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#25145f">
+  <meta name="description" content="Springboard course administration dashboard">
+  <title>Springboard — Course Admin</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="admin-shell">
+    <aside class="sidebar">
+      <a class="brand" href="/course-admin" aria-label="Springboard admin home" data-view="dashboard">
+        <span class="brand-mark"><img src="/assets/springboard-logo.png" alt=""></span>
+        <span><strong>Springboard</strong><small>LEARNING PLATFORM</small></span>
+      </a>
+
+      <div class="sidebar-welcome">
+        <span class="eyebrow">YOUR TEACHING SPACE</span>
+        <h2>Great courses<br>start right here.</h2>
+        <p>Shape what learners can become.</p>
+        <div class="sidebar-art" aria-hidden="true">
+          <span class="art-orbit orbit-one"></span>
+          <span class="art-orbit orbit-two"></span>
+          <div class="art-card">
+            <span class="art-card-top"><i></i><i></i><i></i></span>
+            <span class="art-play"><svg viewBox="0 0 24 24"><path d="m9 6 10 6-10 6z"/></svg></span>
+            <span class="art-line"></span><span class="art-line short"></span>
+          </div>
+          <span class="art-spark spark-one">✦</span>
+          <span class="art-spark spark-two">✧</span>
+        </div>
+      </div>
+
+      <nav class="side-nav" aria-label="Main navigation">
+        <span class="nav-label">WORKSPACE</span>
+        <a class="nav-link active" href="/course-admin" data-view="dashboard">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5v9a1.5 1.5 0 0 1-1.5 1.5h-5v-7h-5v7h-5A1.5 1.5 0 0 1 3 19.5v-9Z"/></svg>
+          Dashboard
+        </a>
+        <a class="nav-link" href="/course-admin?view=create" data-view="create">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/><circle cx="12" cy="12" r="9"/></svg>
+          Create course
+        </a>
+        <a class="nav-link" href="/course-admin?view=courses" data-view="courses">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21V5.5ZM4 17a2.5 2.5 0 0 1 2.5-2.5H20M8 7h8M8 10h6"/></svg>
+          Manage courses
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <span class="online-dot"></span>
+        <span><strong>You're all set</strong><small>Ready to inspire learners</small></span>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="crumb"><span>Springboard</span><span class="crumb-slash">/</span><strong data-page-crumb>Dashboard</strong></div>
+        <div class="topbar-actions">
+          <label class="search-box" aria-label="Search courses">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg>
+            <input type="search" placeholder="Search courses..." data-course-search>
+            <kbd>⌘ K</kbd>
+          </label>
+          <div class="menu-wrap">
+            <button class="icon-button" type="button" aria-label="Notifications" aria-expanded="false" data-notification-toggle>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg>
+              <span class="notification-dot"></span>
+            </button>
+            <div class="popover notification-popover hidden" data-notification-menu>
+              <strong>Notifications</strong>
+              <p data-notification-copy>You're all caught up. Your course updates will show here.</p>
+            </div>
+          </div>
+          <span class="topbar-divider"></span>
+          <div class="menu-wrap">
+            <button class="profile-button" type="button" aria-expanded="false" data-profile-toggle>
+              <span class="avatar">AD</span><span class="profile-copy"><strong>Admin</strong><small>Course manager</small></span>
+              <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
+            </button>
+            <div class="popover profile-popover hidden" data-profile-menu>
+              <strong>Springboard Admin</strong>
+              <p>Managing your learning catalog</p>
+              <button type="button" class="text-action" data-view-link="courses">View courses</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <section class="dashboard-view" data-dashboard-view>
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow violet-eyebrow">COURSE WORKSPACE</div>
+              <h1>Welcome back, Admin <span class="wave">✦</span></h1>
+              <p>Manage your courses, track progress and build better learning experiences.</p>
+            </div>
+            <span class="autosave-status" aria-live="polite" data-autosave-status><span class="status-dot"></span> All changes saved</span>
+          </div>
+
+          <section class="stats-grid" aria-label="Course summary">
+            <button class="stat-card" type="button" data-stat-filter="all">
+              <span class="stat-icon icon-violet"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21V5.5ZM4 17a2.5 2.5 0 0 1 2.5-2.5H20"/></svg></span>
+              <span class="stat-label">Total courses</span><strong data-total-count>0</strong><small><span class="stat-change">Your catalog</span></small>
+            </button>
+            <button class="stat-card" type="button" data-stat-filter="published">
+              <span class="stat-icon icon-green"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg></span>
+              <span class="stat-label">Published</span><strong data-published-count>0</strong><small><span class="stat-change">Live for learners</span></small>
+            </button>
+            <button class="stat-card" type="button" data-stat-filter="draft">
+              <span class="stat-icon icon-amber"><svg viewBox="0 0 24 24"><path d="M12 3v9l6 3M21 12a9 9 0 1 1-9-9"/></svg></span>
+              <span class="stat-label">Drafts</span><strong data-draft-count>0</strong><small><span class="stat-change">In progress</span></small>
+            </button>
+            <button class="stat-card" type="button" data-stat-filter="enrollments">
+              <span class="stat-icon icon-blue"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM20 8v6m3-3h-6"/></svg></span>
+              <span class="stat-label">Enrollments</span><strong data-enrollment-count>0</strong><small><span class="stat-change">Across all courses</span></small>
+            </button>
+          </section>
+
+          <div class="dashboard-panels">
+            <section class="quick-actions-card">
+              <div class="section-title"><div><div class="eyebrow violet-eyebrow">GET STARTED</div><h2>Quick actions</h2></div></div>
+              <button type="button" class="quick-action" data-view-link="create"><span class="quick-action-icon icon-violet">＋</span><span><strong>Create new course</strong><small>Share your knowledge with the world</small></span><span class="quick-arrow">→</span></button>
+              <button type="button" class="quick-action" data-view-link="courses"><span class="quick-action-icon icon-blue"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21V5.5ZM4 17a2.5 2.5 0 0 1 2.5-2.5H20"/></svg></span><span><strong>Manage courses</strong><small>View and update your catalog</small></span><span class="quick-arrow">→</span></button>
+              <div class="quick-tip"><span>✦</span><p><strong>Little steps, big impact.</strong><br>Every great course starts with a first lesson.</p></div>
+            </section>
+            <section class="recent-card">
+              <div class="section-title"><div><div class="eyebrow violet-eyebrow">YOUR CATALOG</div><h2>Recent courses</h2></div><button type="button" class="text-action" data-view-link="courses">View all <span aria-hidden="true">→</span></button></div>
+              <div class="recent-list" data-recent-courses></div>
+              <div class="recent-empty" data-recent-empty><span class="empty-icon">✦</span><strong>Your next great course starts here</strong><p>Create a course to start building your catalog.</p><button type="button" class="button button-secondary" data-view-link="create">Create a course</button></div>
+            </section>
+          </div>
+        </section>
+
+        <section class="create-view hidden" data-create-view>
+          <div class="page-heading">
+            <div><div class="eyebrow violet-eyebrow">COURSE WORKSPACE</div><h1>Create a new course</h1><p>Build something your learners will love.</p></div>
+            <span class="autosave-status" aria-live="polite"><span class="status-dot"></span> All changes saved</span>
+          </div>
+
+          <section class="wizard-card" aria-labelledby="wizard-title">
+            <div class="wizard-header">
+              <div>
+                <div class="eyebrow violet-eyebrow">COURSE BUILDER</div>
+                <h2 id="wizard-title" data-step-heading>Let's start with the basics</h2>
+                <p data-step-description>A few details help learners find the right course.</p>
+              </div>
+              <span class="step-count" data-step-count>STEP 01 <span>OF 03</span></span>
+            </div>
+
+            <div class="stepper" aria-label="Course creation progress">
+              <div class="step-track"><span data-step-progress></span></div>
+              <button type="button" class="step-item current" data-step-link="1" aria-current="step">
+                <span class="step-number">01</span><span>Basic details</span>
+              </button>
+              <button type="button" class="step-item" data-step-link="2">
+                <span class="step-number">02</span><span>Course content</span>
+              </button>
+              <button type="button" class="step-item" data-step-link="3">
+                <span class="step-number">03</span><span>Review &amp; publish</span>
+              </button>
+            </div>
+
+            <div class="wizard-layout">
+              <form class="course-form" novalidate data-course-form>
+                <section class="wizard-step active" data-step-panel="1" aria-label="Basic details">
+                  <div class="form-grid">
+                    <div class="field">
+                      <label for="course-id">Course ID <span class="optional-label">AUTO</span></label>
+                      <input id="course-id" name="courseId" type="text" readonly>
+                    </div>
+                    <div class="field">
+                      <label for="title">Course title <span class="required">*</span></label>
+                      <input id="title" name="title" type="text" placeholder="e.g. Introduction to web development" maxlength="90" required>
+                      <span class="field-error" data-error-for="title"></span>
+                    </div>
+                    <div class="field">
+                      <label for="category">Category <span class="required">*</span></label>
+                      <select id="category" name="category" required>
+                        <option value="">Choose a category</option>
+                        <option>Design</option><option>Development</option><option>Business</option>
+                        <option>Marketing</option><option>Data &amp; Analytics</option><option>Personal Growth</option>
+                      </select>
+                      <span class="field-error" data-error-for="category"></span>
+                    </div>
+                    <div class="field">
+                      <label for="price">Cost (USD) <span class="required">*</span></label>
+                      <div class="input-prefix"><span>$</span><input id="price" name="price" type="number" min="0" step="0.01" placeholder="49.00" required></div>
+                      <span class="field-error" data-error-for="price"></span>
+                    </div>
+                  </div>
+                  <div class="step-actions">
+                    <button type="button" class="button button-secondary" data-save-draft>Save draft</button>
+                    <button type="button" class="button button-primary" data-next>Continue to content <span aria-hidden="true">→</span></button>
+                  </div>
+                </section>
+
+                <section class="wizard-step" data-step-panel="2" aria-label="Course content" hidden>
+                  <div class="field">
+                    <div class="label-row"><label for="description">Course description <span class="required">*</span></label><span class="character-count" data-count-for="description">0 / 500</span></div>
+                    <textarea id="description" name="description" rows="4" maxlength="500" placeholder="What will learners be able to do after taking your course?" required></textarea>
+                    <span class="field-error" data-error-for="description"></span>
+                  </div>
+                  <div class="form-grid content-grid">
+                    <div class="field">
+                      <label for="contents">What you'll teach <span class="required">*</span></label>
+                      <textarea id="contents" name="contents" rows="4" placeholder="Add one topic per line" required></textarea>
+                      <span class="field-hint">One lesson or topic per line.</span>
+                      <span class="field-error" data-error-for="contents"></span>
+                    </div>
+                    <div class="field">
+                      <label for="requirements">Requirements</label>
+                      <textarea id="requirements" name="requirements" rows="4" placeholder="What should learners know first?"></textarea>
+                      <span class="field-hint">Let learners know how to prepare.</span>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="learn">Learning outcomes <span class="required">*</span></label>
+                    <textarea id="learn" name="learn" rows="3" placeholder="Add one learning outcome per line" required></textarea>
+                    <span class="field-error" data-error-for="learn"></span>
+                  </div>
+                  <div class="step-actions">
+                    <button type="button" class="button button-quiet" data-back>← Back</button>
+                    <div class="action-group">
+                      <button type="button" class="button button-secondary" data-save-draft>Save draft</button>
+                      <button type="button" class="button button-primary" data-next>Continue to review <span aria-hidden="true">→</span></button>
+                    </div>
+                  </div>
+                </section>
+
+                <section class="wizard-step" data-step-panel="3" aria-label="Review and publish" hidden>
+                  <div class="review-heading">
+                    <span class="review-check">✓</span>
+                    <div><h3>Your course is almost ready</h3><p>Check the details and publish when you’re happy.</p></div>
+                  </div>
+                  <div class="review-list" data-review-list></div>
+                  <div class="form-grid review-fields">
+                    <div class="field">
+                      <label for="creator">Creator ID <span class="required">*</span></label>
+                      <input id="creator" name="creator" type="text" placeholder="e.g. admin01" required>
+                      <span class="field-error" data-error-for="creator"></span>
+                    </div>
+                    <div class="field">
+                      <label for="duration">Estimated duration</label>
+                      <input id="duration" name="duration" type="text" placeholder="e.g. 6 weeks">
+                    </div>
+                    <div class="field">
+                      <label for="enrolled">Enrolled students</label>
+                      <input id="enrolled" name="enrolled" type="number" min="0" step="1" value="0">
+                    </div>
+                    <div class="field">
+                      <label for="rating">Rating</label>
+                      <input id="rating" name="rating" type="number" min="0" max="5" step="0.1" value="0">
+                    </div>
+                  </div>
+                  <div class="step-actions">
+                    <button type="button" class="button button-quiet" data-back>← Back</button>
+                    <div class="action-group">
+                      <button type="button" class="button button-secondary" data-save-draft>Save draft</button>
+                      <button type="button" class="button button-primary" data-publish><span aria-hidden="true">✦</span> Publish course</button>
+                    </div>
+                  </div>
+                </section>
+              </form>
+
+              <aside class="preview-panel" aria-label="Student course preview">
+                <div class="preview-heading"><span class="preview-eye">◉</span><div><strong>Student preview</strong><small>Updates as you create</small></div><span class="live-pill"><i></i> LIVE</span></div>
+                <div class="course-preview">
+                  <div class="preview-cover">
+                    <span class="cover-category" data-preview-category>YOUR CATEGORY</span>
+                    <span class="cover-art" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <span class="cover-id" data-preview-id>COURSE ID</span>
+                  </div>
+                  <div class="preview-details">
+                    <div class="preview-rating"><span class="stars">★★★★★</span><span>New course</span></div>
+                    <h3 data-preview-title>Your course title</h3>
+                    <p class="preview-description" data-preview-description>Your course description will appear here. Share what learners will discover.</p>
+                    <div class="preview-meta"><span class="preview-avatar" data-preview-initials>SB</span><span data-preview-creator>Springboard instructor</span><strong data-preview-price>$0</strong></div>
+                  </div>
+                </div>
+                <div class="preview-note"><span>✦</span> This is how your course appears to learners.</div>
+              </aside>
+            </div>
+          </section>
+        </section>
+
+        <section class="courses-view hidden" data-courses-view aria-labelledby="courses-title">
+          <div class="page-heading courses-heading">
+            <div><div class="eyebrow violet-eyebrow">YOUR CATALOG</div><h1 id="courses-title">Manage courses</h1><p>Keep every course organized and up to date.</p></div>
+            <button type="button" class="button button-primary" data-view-link="create">＋ Create course</button>
+          </div>
+          <div class="course-table-card">
+            <div class="table-toolbar"><div><h2>All courses</h2><p data-course-total>0 courses in your catalog</p></div>
+              <div class="filter-tabs" role="group" aria-label="Filter courses">
+                <button type="button" class="filter-tab active" data-course-filter="all">All</button>
+                <button type="button" class="filter-tab" data-course-filter="published">Published</button>
+                <button type="button" class="filter-tab" data-course-filter="draft">Drafts</button>
+              </div>
+            </div>
+            <div class="table-scroll">
+              <table><thead><tr><th>COURSE</th><th>COURSE ID</th><th>PRICE</th><th>ENROLLMENTS</th><th>STATUS</th><th><span class="sr-only">Actions</span></th></tr></thead>
+                <tbody data-course-rows></tbody>
+              </table>
+              <div class="empty-state hidden" data-empty-state><span class="empty-icon">✦</span><h3>No courses yet</h3><p>Your new courses will appear here. Start by creating your first one.</p><button type="button" class="button button-primary" data-view-link="create">Create your first course</button></div>
+              <div class="empty-state hidden" data-no-results><h3>No matching courses</h3><p>Try a different search or status filter.</p></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast" role="status" aria-live="polite" data-toast></div>
+  <div class="modal-backdrop hidden" data-success-modal>
+    <section class="success-modal" role="dialog" aria-modal="true" aria-labelledby="success-title">
+      <button class="modal-close" type="button" aria-label="Close" data-close-success>×</button>
+      <div class="success-art" aria-hidden="true"><span>✓</span><i class="confetti confetti-a"></i><i class="confetti confetti-b"></i><i class="confetti confetti-c"></i></div>
+      <div class="eyebrow violet-eyebrow">YOU DID IT</div>
+      <h2 id="success-title">Your course is live!</h2>
+      <p><strong data-success-course></strong> is ready for learners to discover.</p>
+      <div class="modal-actions"><button type="button" class="button button-secondary" data-close-success>Keep creating</button><button type="button" class="button button-primary" data-view-link="courses">View courses</button></div>
+    </section>
+  </div>
+</body>
+</html>

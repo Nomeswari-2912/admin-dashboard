@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#672384">
+  <title>Admin Dashboard - Course Basics</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="course-window">
+    <aside class="color-panel" aria-hidden="true"></aside>
+    <section class="form-panel" aria-labelledby="page-title">
+      <div class="form-header">
+        <a class="back-link" href="/">← Back</a>
+        <img class="brand-logo" src="/assets/springboard-logo.png" alt="Springboard logo">
+      </div>
+      <h1 id="page-title">Admin Dashboard</h1>
+      <form class="course-form basic-form" action="/details">
+        <div class="field">
+          <label for="course-id">Course ID</label>
+          <input id="course-id" name="courseId" type="text" required>
+        </div>
+        <div class="field">
+          <label for="title">Title</label>
+          <input id="title" name="title" type="text" required>
+        </div>
+        <div class="field">
+          <label for="category">Category</label>
+          <input id="category" name="category" type="text" required>
+        </div>
+        <div class="field">
+          <label for="cost">Cost</label>
+          <input id="cost" name="cost" type="number" min="0" step="0.01" required>
+        </div>
+        <button class="round-action" type="submit" aria-label="Continue to course description">→</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
