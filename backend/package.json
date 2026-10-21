@@ -1,0 +1,7 @@
+{
+  "name": "springboard-admin-backend",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  }
+}

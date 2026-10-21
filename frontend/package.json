@@ -1,0 +1,7 @@
+{
+  "name": "springboard-admin-frontend",
+  "private": true,
+  "scripts": {
+    "start": "node open-app.js"
+  }
+}

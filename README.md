@@ -4,15 +4,31 @@ A standalone, dependency-free admin portal based on the supplied Figma prototype
 
 ## Run
 
-From this folder, run:
+Start the backend in its own terminal:
 
 ```text
+cd backend
 npm start
 ```
 
-Then open <http://127.0.0.1:5500>.
+The backend terminal prints a clickable status link: <http://127.0.0.1:5500/api/status>. Opening that link displays the active port. The frontend dashboard remains at <http://127.0.0.1:5500>.
 
 The app uses the Node.js built-in HTTP server and does not require `npm install`.
+
+In a second terminal, open the frontend from its folder:
+
+```text
+cd frontend
+npm start
+```
+
+The frontend command prints its own ready message and opens the running backend URL in your browser. If the backend uses another URL, set `APP_URL` before starting the frontend.
+
+## Project structure
+
+- `frontend/` — HTML pages, stylesheets, browser scripts, and assets
+- `backend/` — Node.js HTTP server that serves the frontend
+- `package.json` — root-level start script
 
 ## Workspace
 

@@ -2,7 +2,7 @@ const http = require("node:http");
 const fs = require("node:fs");
 const path = require("node:path");
 
-const root = __dirname;
+const frontendRoot = path.join(__dirname, "..", "frontend");
 const files = {
   "/": ["portal.html", "text/html; charset=utf-8"],
   "/users": ["portal.html", "text/html; charset=utf-8"],
@@ -23,11 +23,22 @@ const files = {
   "/portal.css": ["portal.css", "text/css; charset=utf-8"],
   "/portal.js": ["portal.js", "text/javascript; charset=utf-8"],
   "/assets/springboard-logo.png": ["assets/springboard-logo.png", "image/png"],
-  "/assets/figma-liquid-art.png": ["assets/figma-liquid-art.png", "image/png"],
 };
 
 const server = http.createServer((request, response) => {
   const pathname = new URL(request.url, "http://localhost").pathname;
+
+  if (pathname === "/api/status") {
+    const port = server.address().port;
+    response.writeHead(200, {
+      "Content-Type": "text/plain; charset=utf-8",
+      "Cache-Control": "no-store",
+      "X-Content-Type-Options": "nosniff",
+    });
+    response.end(`Server is running on port ${port}`);
+    return;
+  }
+
   const file = files[pathname];
 
   if (!file) {
@@ -37,7 +48,7 @@ const server = http.createServer((request, response) => {
   }
 
   const [relativePath, contentType] = file;
-  fs.readFile(path.join(root, relativePath), (error, content) => {
+  fs.readFile(path.join(frontendRoot, relativePath), (error, content) => {
     if (error) {
       response.writeHead(500, { "Content-Type": "text/plain; charset=utf-8" });
       response.end("Could not load the requested app file.");
@@ -55,7 +66,7 @@ const server = http.createServer((request, response) => {
 
 const port = Number(process.env.PORT) || 5500;
 server.listen(port, "127.0.0.1", () => {
-  console.log(`Course admin app running at http://127.0.0.1:${port}`);
+  console.log(`Backend server is running: http://127.0.0.1:${port}/api/status`);
 });
 
 server.on("error", (error) => {
