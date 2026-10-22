@@ -5,6 +5,7 @@ const stepPaths = [courseAdminPath, "/details", "/settings"];
 
 const form = document.querySelector("[data-course-form]");
 const toast = document.querySelector("[data-toast]");
+const adminShell = document.querySelector(".admin-shell");
 const dashboardView = document.querySelector("[data-dashboard-view]");
 const createView = document.querySelector("[data-create-view]");
 const coursesView = document.querySelector("[data-courses-view]");
@@ -14,6 +15,7 @@ const shouldInitializeDashboard = Boolean(form || dashboardView || createView ||
 let currentStep = 1;
 let currentView = new URLSearchParams(window.location.search).get("view") || "dashboard";
 let activeCourseId = null;
+let isEditingCourse = false;
 let filterStatus = "all";
 let toastTimeout;
 let courses = [];
@@ -233,7 +235,9 @@ function categoryClass(category) {
 }
 
 function setView(view, updateHistory = true) {
+  if (view !== "create") isEditingCourse = false;
   currentView = view;
+  adminShell?.classList.toggle("editing-course", view === "create" && isEditingCourse);
   dashboardView.classList.toggle("hidden", view !== "dashboard");
   createView.classList.toggle("hidden", view !== "create");
   coursesView.classList.toggle("hidden", view !== "courses");
@@ -334,6 +338,8 @@ function publishCourse() {
   const course = buildCourse("published");
   if (!upsertCourse(course)) return;
   activeCourseId = null;
+  isEditingCourse = false;
+  adminShell?.classList.remove("editing-course");
   draft = {};
   try {
     localStorage.removeItem(draftKey);
@@ -349,6 +355,7 @@ function editCourse(id) {
   const course = courses.find((item) => item.id === id);
   if (!course) return showToast("That course could not be found.", true);
   activeCourseId = course.id;
+  isEditingCourse = true;
   restoreForm({ ...course, price: course.price ?? course.cost ?? "" });
   setView("create");
   setStep(1);

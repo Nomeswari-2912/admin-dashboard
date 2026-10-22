@@ -895,3 +895,31 @@ td { font-weight: 500; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
+
+.edit-page[data-screen="edit-user"] {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  width: 100%;
+  min-height: 100vh;
+  height: 100vh;
+  margin: 0;
+  overflow-y: auto;
+  border-radius: 0;
+  box-shadow: none;
+}
+.edit-page[data-screen="edit-user"]::before,
+.edit-page[data-screen="edit-user"] .edit-header,
+.edit-page[data-screen="edit-user"] > .toast { display: none; }
+.edit-page[data-screen="edit-user"] .edit-card {
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  max-width: 1440px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: clamp(24px, 5vh, 64px) clamp(24px, 8vw, 128px);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+body:has(.edit-page[data-screen="edit-user"]:not([hidden])) > .global-toast { display: none; }

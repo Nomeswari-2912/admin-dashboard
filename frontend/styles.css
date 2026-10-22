@@ -747,3 +747,42 @@ body:has(.course-window) {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+.admin-shell.editing-course .sidebar,
+.admin-shell.editing-course .topbar,
+.admin-shell.editing-course .create-view > .page-heading,
+.admin-shell.editing-course .wizard-header,
+.admin-shell.editing-course .stepper,
+.admin-shell.editing-course .preview-panel,
+.admin-shell.editing-course + .toast { display: none; }
+.admin-shell.editing-course .main-area,
+.admin-shell.editing-course .page-content,
+.admin-shell.editing-course .create-view {
+  min-height: 100vh;
+  margin: 0;
+}
+.admin-shell.editing-course .page-content {
+  width: 100%;
+  padding: 0;
+}
+.admin-shell.editing-course .wizard-card {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  padding: clamp(24px, 5vh, 64px) clamp(24px, 8vw, 128px);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.admin-shell.editing-course .wizard-layout {
+  display: block;
+  width: 100%;
+}
+.admin-shell.editing-course .course-form {
+  width: min(100%, 1280px);
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
